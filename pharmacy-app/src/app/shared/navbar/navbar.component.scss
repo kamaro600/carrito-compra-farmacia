@@ -1,0 +1,5 @@
+.dropdown-menu.show {
+  display: block;
+  position: absolute;
+  z-index: 1050; /* encima de la navbar */
+}

@@ -1,0 +1,80 @@
+<div class="login-container">
+  <div class="row g-0 h-100">
+    <!-- Formulario de Login -->
+    <div class="col-lg-6">
+      <div class="login-form-section">
+        <h2 class="login-title">Bienvenido de vuelta</h2>
+        <p class="login-subtitle">Ingresa tus credenciales para acceder</p>
+
+        <!-- Mensaje de Error -->
+        <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+          <i class="fas fa-exclamation-circle me-2"></i>
+          {{ errorMessage }}
+        </div>
+
+        <!-- Formulario -->
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-floating">
+            <input type="text" 
+                   class="form-control" 
+                   id="username" 
+                   formControlName="username"
+                   placeholder="Usuario"
+                   [class.is-invalid]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+            <label for="username">
+              <i class="fas fa-user me-2"></i>Usuario
+            </label>
+          </div>
+
+          <div class="form-floating">
+            <input type="password" 
+                   class="form-control" 
+                   id="password" 
+                   formControlName="password"
+                   placeholder="Contraseña"
+                   [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+            <label for="password">
+              <i class="fas fa-lock me-2"></i>Contraseña
+            </label>
+          </div>
+
+          <div class="form-check mb-3">
+            <input class="form-check-input" 
+                   type="checkbox" 
+                   id="remember-me" 
+                   formControlName="rememberMe">
+            <label class="form-check-label" for="remember-me">
+              Recordarme
+            </label>
+          </div>
+
+          <button type="submit" 
+                  class="btn btn-login" 
+                  [disabled]="loginForm.invalid || isLoading">
+            <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+            <i *ngIf="!isLoading" class="fas fa-sign-in-alt me-2"></i>
+            {{ isLoading ? 'Iniciando...' : 'Iniciar Sesión' }}
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Panel de Branding -->
+    <div class="col-lg-6">
+      <div class="login-image-section">
+        <div class="pharmacy-icon">
+          <i class="fas fa-pills"></i>
+        </div>
+        <h1 class="brand-title">PharmaCare+</h1>
+        <p class="brand-subtitle">Tu farmacia digital de confianza</p>
+
+        <ul class="features">
+          <li><i class="fas fa-shield-alt"></i> Medicamentos certificados y seguros</li>
+          <li><i class="fas fa-truck-medical"></i> Entrega rápida de medicamentos</li>
+          <li><i class="fas fa-user-nurse"></i> Asesoría farmacéutica profesional</li>
+          <li><i class="fas fa-clock"></i> Atención 24/7 para emergencias</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

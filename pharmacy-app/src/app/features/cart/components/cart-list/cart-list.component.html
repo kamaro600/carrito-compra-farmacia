@@ -1,0 +1,113 @@
+<app-navbar></app-navbar>
+<div class="cart-container">
+  <div class="cart-header">
+    <h2 class="mb-0">
+      <i class="fas fa-shopping-cart text-primary me-2"></i>
+      Mi Carrito de Compras
+    </h2>
+    <p class="text-muted mb-0">
+      Revise sus productos antes de proceder al pago
+    </p>
+  </div>
+  <div *ngIf="items.length > 0; else emptyCart">
+    <div class="cart-item" *ngFor="let item of items">
+      <div class="row align-items-center">
+        <div class="col-md-2">
+          <div class="product-image">
+            <i class="fas fa-pills"></i>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h5 class="mb-1">{{ item.name }}</h5>
+        </div>
+        <div class="col-md-2">
+          <p class="mb-0 fw-bold text-primary">
+            S/. <span>{{ item.price | number : "1.2-2" }}</span>
+          </p>
+        </div>
+        <div class="col-md-2">
+          <input
+            type="number"
+            class="form-control quantity-input text-center"
+            [value]="item.quantity"
+            min="1"
+            (change)="updateQuantity(item, $event)"
+          />
+        </div>
+        <div class="col-md-1">
+          <p class="mb-0 fw-bold">
+            S/. <span>{{ item.price * item.quantity | number : "1.2-2" }}</span>
+          </p>
+        </div>
+        <div class="col-md-1">
+          <button
+            class="btn btn-sm btn-outline-danger"
+            (click)="confirmDelete(item)"
+          >
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-end fw-bold">
+      Total: S/. {{ total | number : "1.2-2" }}
+    </div>
+
+    <div class="d-flex justify-content-between mt-3">
+      <a class="btn btn-outline-primary" (click)="irProduct()">
+        <i class="fas fa-arrow-left me-1"></i>Seguir Comprando
+      </a>
+      <button class="btn btn-danger" (click)="clearCart()">
+        <i class="fas fa-trash me-1"></i>Vaciar Carrito
+      </button>
+      <button 
+      class="btn btn-success"
+      (click)="goCheckout()">
+      <i class="fas fa-credit-card me-2"></i>Pagar
+    </button>
+    </div>
+  </div>
+
+  <ng-template #emptyCart>
+    <div class="text-center py-5">
+      <i class="fas fa-box-open fa-4x text-muted mb-3"></i>
+      <h4 class="text-muted">Tu carrito está vacío</h4>
+      <a (click)="irProduct()" class="btn btn-primary mt-3"> Ir a Productos </a>
+    </div>
+  </ng-template>
+</div>
+
+<!-- 🔹 Modal de Confirmación -->
+<div class="modal fade" id="deleteModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger">
+          <i class="fas fa-exclamation-triangle me-2"></i>Confirmar Eliminación
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        ¿Seguro que deseas eliminar
+        <strong>{{ itemToDelete?.name }}</strong> del carrito?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="removeItemConfirmed()"
+        >
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

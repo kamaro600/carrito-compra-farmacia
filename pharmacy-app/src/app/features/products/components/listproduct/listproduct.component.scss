@@ -1,0 +1,41 @@
+ .welcome-card {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stats-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stats-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .bg-pharmacy-gradient { background: linear-gradient(135deg, #28a745 0%, #20c997 100%); }
+        .bg-medicine-gradient { background: linear-gradient(135deg, #17a2b8 0%, #6610f2 100%); }
+        .bg-sales-gradient { background: linear-gradient(135deg, #fd7e14 0%, #dc3545 100%); }
+        .bg-prescriptions-gradient { background: linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%); }
+
+        .navbar-brand {
+            font-weight: bold;
+        }
+
+        .bg-pharmacy {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%) !important;
+        }
