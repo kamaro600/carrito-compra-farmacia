@@ -4,7 +4,8 @@ Este proyecto es una aplicación web para un carrito de compras de una farmacia,
 
 ## Tecnologías Utilizadas
 
-*   **Angular**: Una plataforma para construir aplicaciones web de escritorio y móviles.
+*   **Angular**: Una plataforma para construir aplicaciones web de escritorio y móviles. Version usada Angular CLI: 18.2.21
+*   **NodeJS***: Version usada Node: 20.19.5
 *   **TypeScript**: Un superconjunto de JavaScript que añade tipos estáticos.
 *   **Bootstrap**: Un popular framework de CSS para desarrollar sitios web responsivos y mobile-first.
 *   **Font Awesome**: Un popular conjunto de herramientas e iconos.
