@@ -1,32 +1,60 @@
-# WEB COMPRAS FARMACIA
+# Aplicación Web de Carrito de Compras para Farmacia
 
-Tecnologias utilizadas
- ANGULAR 18.2
+Este proyecto es una aplicación web para un carrito de compras de una farmacia, desarrollada con Angular.
 
- 
-1.- Realizar el clonado desde el repositorio
-[git clone](https://github.com/kamaro600/carrito-compra-farmacia.git)
+## Tecnologías Utilizadas
 
-2.- Moverse a la carpeta 'pharmacy-app'
+*   **Angular**: Una plataforma para construir aplicaciones web de escritorio y móviles.
+*   **TypeScript**: Un superconjunto de JavaScript que añade tipos estáticos.
+*   **Bootstrap**: Un popular framework de CSS para desarrollar sitios web responsivos y mobile-first.
+*   **Font Awesome**: Un popular conjunto de herramientas e iconos.
+*   **SCSS**: Un preprocesador de CSS que añade características como variables y anidamiento.
 
-3.- Validar la instalacion de node js 
+## Guía de Inicio
 
- node -v
- 
-4.- Validar la instalacion de npm y angular 
+Sigue estas instrucciones para obtener una copia del proyecto y ejecutarlo en tu máquina local para desarrollo y pruebas.
 
+### Prerrequisitos
+
+Necesitas tener [Node.js](https://nodejs.org/) y [Angular CLI](https://cli.angular.io/) instalados en tu sistema.
+
+Puedes verificar tus instalaciones con:
+
+```bash
+node -v
 npm -v
 ng version
+```
 
-5.- Descargar las librerias
+### Instalación
 
-npm install
+1.  **Clona el repositorio:**
+    ```bash
+    git clone https://github.com/kamaro600/carrito-compra-farmacia.git
+    ```
 
-6.- Validar el endpint para el consumo de api en el archivo environment.ts
+2.  **Navega al directorio del proyecto:**
+    ```bash
+    cd carrito-compra-farmacia/pharmacy-app
+    ```
 
-Modificar segun la ruta donde se desplego el Backend delproyecto [URL API]
+3.  **Instala los paquetes de NPM:**
+    ```bash
+    npm install
+    ```
 
-7.-  Ejecutar el proyecto
+4.  **Configura el endpoint de la API:**
 
-ng serve
+    Abre el archivo `src/environments/environment.ts` y modifica la propiedad `apiUrl` para que apunte a tu API de backend.
 
+## Servidor de Desarrollo
+
+Ejecuta `ng serve` para un servidor de desarrollo. Navega a `http://localhost:4200/`. La aplicación se recargará automáticamente si cambias alguno de los archivos de origen.
+
+## Compilación (Build)
+
+Ejecuta `ng build` para compilar el proyecto. Los artefactos de la compilación se almacenarán en el directorio `dist/`. Usa la bandera `--prod` para una compilación de producción.
+
+## Más Ayuda
+
+Para obtener más ayuda sobre Angular CLI, usa `ng help` or revisa la página [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli).
