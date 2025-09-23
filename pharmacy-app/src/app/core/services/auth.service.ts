@@ -22,8 +22,19 @@ export class AuthService {
     return this.http.post<LoginResponse>(`${environment.apiUrl}/auth/login`, credentials)
       .pipe(
         tap(response => {
-          this.storeAuthData(response.token, response.user);
-          this.currentUserSubject.next(response.user);
+
+          const user: User = {
+          id: 0, 
+          username: response.username,
+          firstName: '', 
+          lastName: '',  
+          motherLastName: '', 
+          email: response.email,
+          phone: '', 
+          roles: response.roles
+        };
+          this.storeAuthData(response.token, user);
+          this.currentUserSubject.next(user);
         })
       );
   }

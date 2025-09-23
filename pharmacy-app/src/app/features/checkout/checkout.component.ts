@@ -34,6 +34,7 @@ export class CheckoutComponent implements OnInit {
     // Aquí luego puedes conectar con tu API de pagos
     alert(`Pago realizado con éxito por S/. ${this.total.toFixed(2)}`);
     this.cartService.clearCart(); // limpia carrito después de pagar
+     this.router.navigate(['/products']);
   }
 
   cart(){

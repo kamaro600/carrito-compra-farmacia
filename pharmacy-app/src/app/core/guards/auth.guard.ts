@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { CanActivate, Router ,ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Injectable({
@@ -11,11 +11,16 @@ export class AuthGuard implements CanActivate {
     private router: Router
   ) {}
 
-  canActivate(): boolean {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (this.authService.isAuthenticated()) {
+      // si la URL es raíz, mando a products
+      if (state.url === '/' || state.url === '') {
+        return false;
+      }
       return true;
     }
-    
+
+    // no logueado → login
     this.router.navigate(['/auth/login']);
     return false;
   }

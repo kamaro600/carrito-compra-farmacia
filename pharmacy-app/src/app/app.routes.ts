@@ -2,12 +2,13 @@ import { Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
 import { AUTH_ROUTES } from './features/auth/auth.routes';
 import { PRODUCT_ROUTES } from './features/products/product.route';
+import { InitialRedirectResolver } from './core/resolvers/initial-redirect.resolver';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/auth/login',
-    pathMatch: 'full'
+    resolve: { redirect: InitialRedirectResolver },
+    children: []
   },
   {
     path: 'auth',
