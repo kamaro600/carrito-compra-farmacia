@@ -15,10 +15,10 @@
 
     <div class="collapse navbar-collapse" id="navbarNav">
       <div class="navbar-nav ms-auto">
-        <a class="nav-link active" routerLink="/">
+        <a class="nav-link active" (click)="home()">
           <i class="fas fa-home me-1"></i>Inicio
         </a>
-        <a class="nav-link" routerLink="/cart">
+        <a class="nav-link" (click)="cart()">
           <i class="fas fa-shopping-cart me-1"></i>Carrito
         </a>
         <a class="nav-link" (click)="logout()">

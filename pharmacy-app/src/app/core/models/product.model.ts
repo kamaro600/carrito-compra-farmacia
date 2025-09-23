@@ -6,6 +6,7 @@ export interface Product {
   stock: number;
   category: ProductCategory;
   imageUrl?: string;
+  quantity: number; // para manejar cantidad en el carrito
 }
 
 export enum ProductCategory {

@@ -23,7 +23,14 @@ isOpen = false;
     // redirigir al login
     this.router.navigate(['/auth/login']);
   }
+ cart(){
+   this.router.navigate(['/cart']);
+ }
 
+ home(){
+
+   this.router.navigate(['/products']);
+ }
   toggleDropdown(event: Event) {
   event.preventDefault();
   this.isOpen = !this.isOpen;

@@ -18,7 +18,7 @@ export class ProductService {
       params = params.set('category', category);
     }
     
-    return this.http.get<Product[]>(this.apiUrl, { params });
+    return this.http.get<Product[]>(`${this.apiUrl}/list`, { params });
   }
 
   getProduct(id: number): Observable<Product> {

@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../../../../shared/navbar/navbar.component';
 import { CartService } from '../../../../core/services/cart.service';
+import { ProductService } from '../../../../core/services/product.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Product, ProductCategory } from '../../../../core/models/product.model';
 
-interface Product {
+/*interface Product {
   id: number;
   name: string;
   description: string;
@@ -13,7 +15,7 @@ interface Product {
   stock: number;
   category: string;
   quantity: number;
-}
+}*/
 
 @Component({
   selector: 'app-listproduct', 
@@ -25,17 +27,36 @@ interface Product {
 export class ListproductComponent {
   success: string | null = null;
   error: string | null = null;
+  products: Product[] = [];
+  private allProducts: Product[] = [];
 
   constructor(
     private router: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private productService: ProductService
   ) 
   {
   
   }
 
+ ngOnInit(): void {
+    this.loadProducts();
+  }
 
-  products: Product[] = [
+  loadProducts(): void {
+    this.productService.getProducts().subscribe({
+      next: (data) => {
+        this.products = data.map(p => ({ ...p, quantity: 1 }));
+        this.allProducts = [...this.products];
+      },
+      error: (err) => {
+        console.error('Error al cargar productos', err);
+        this.error = 'No se pudieron cargar los productos.';
+      }
+    });
+  }
+
+  /*products: Product[] = [
     {
       id: 1,
       name: 'Paracetamol 500mg',
@@ -74,7 +95,7 @@ export class ListproductComponent {
     }
   ];
 
-  private allProducts = [...this.products];
+  private allProducts = [...this.products];*/
 
   /**
    * Filtrar productos por categoría
@@ -94,7 +115,7 @@ export class ListproductComponent {
       this.error = 'El producto está agotado.';
       this.success = null;
       return;
-    }
+    } 
 
     if (product.quantity > product.stock) {
       this.error = 'La cantidad seleccionada supera el stock disponible.';

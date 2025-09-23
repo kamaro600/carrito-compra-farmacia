@@ -1,3 +1,5 @@
+
+<app-navbar></app-navbar>
 <div class="container mt-4">
   <div class="card shadow-lg border-0 rounded-4">
     <div class="card-body p-4">
@@ -80,7 +82,7 @@
                   <input type="text" class="form-control" placeholder="Nombre del Titular">
                 </div>
                 <div class="col-12">
-                  <input type="text" class="form-control" placeholder="Número de Tarjeta">
+                  <input type="text" [(ngModel)]="cardNumber" (input)="formatCardNumber($event)" class="form-control" maxlength="19"  pattern="[0-9\s]{13,19}"  placeholder="Número de Tarjeta">
                   <small class="text-muted">
                     <i class="fab fa-cc-visa me-1"></i>
                     <i class="fab fa-cc-mastercard me-1"></i>
@@ -89,10 +91,10 @@
                   </small>
                 </div>
                 <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="MM/AA">
+                  <input type="text"  [(ngModel)]="expireDate" (input)="formatExpireDate($event)" maxlength="5" class="form-control" pattern="[0-9]{2}/[0-9]{2}" placeholder="MM/AA">
                 </div>
                 <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="Código de Seguridad">
+                  <input type="text" class="form-control" pattern="[0-9]{3,4}"  maxlength="4" placeholder="Código de Seguridad">
                 </div>
               </div>
             </div>
@@ -100,7 +102,7 @@
 
           <!-- Botones -->
           <div class="d-flex justify-content-between">
-            <a routerLink="/cart" class="btn btn-outline-secondary">
+            <a (click)="cart()" class="btn btn-outline-secondary">
               <i class="fas fa-arrow-left me-2"></i> Volver al Carrito
             </a>
             <button class="btn btn-success" (click)="pay()">
