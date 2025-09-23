@@ -104,7 +104,7 @@ export class ListproductComponent {
     if (category === 'all') {
       this.products = [...this.allProducts];
     } else {
-      this.products = this.allProducts.filter(p => p.category === category);
+      this.products = this.allProducts.filter(p => p.category.name === category);
     }
   }
   /**

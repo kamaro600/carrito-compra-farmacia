@@ -9,12 +9,17 @@ export interface Product {
   quantity: number; // para manejar cantidad en el carrito
 }
 
-export enum ProductCategory {
+export interface ProductCategory {
+  id: number;
+  name: string;
+  description?: string;
+}
+/*export enum ProductCategory {
   ANALGESICS = 'analgesics',
   VITAMINS = 'vitamins',
   ANTIBIOTICS = 'antibiotics',
   DERMATOLOGY = 'dermatology'
-}
+}*/
 
 export interface CartItem {
   id: number;

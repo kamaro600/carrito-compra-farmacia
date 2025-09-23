@@ -12,7 +12,7 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  getProducts(category?: ProductCategory): Observable<Product[]> {
+  getProducts(category?: string): Observable<Product[]> {
     let params = new HttpParams();
     if (category) {
       params = params.set('category', category);
